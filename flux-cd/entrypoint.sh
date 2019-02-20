@@ -42,4 +42,8 @@ if [ -d "$OPS_CHINA" ]; then
 fi
 
 cd $FLUX_REPO
+
+git commit -a -m "Automated update of the k8s manifests from $GITHUB_REPOSITORY"
 git status
+# Allow for PRs? https://hub.github.com/hub-pull-request.1.html
+git push origin HEAD:refs/heads/master
