@@ -46,9 +46,9 @@ fi
 
 cd $FLUX_REPO
 git add -A
+git status
 if ! git diff-index --quiet HEAD --; then
     git commit --quiet -a -m "Automated update of the k8s manifests from $GITHUB_REPOSITORY"
-    git status
     # Allow for PRs? https://hub.github.com/hub-pull-request.1.html
     git push --quiet origin HEAD:refs/heads/master
     echo "[US] Pushed kubernetes manifest changes to flux repo"
