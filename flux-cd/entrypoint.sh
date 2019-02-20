@@ -1,6 +1,6 @@
 #!/bin/sh -l
 
-if [ "$TESTVAR" != "refs/heads/master" ]
+if [ "$TESTVAR" != "refs/heads/master" ]; then
     exit 0
 fi
 
