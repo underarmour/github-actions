@@ -1,4 +1,5 @@
 #!/bin/sh -l
+set +x
 
 if [ "$GITHUB_REF" != "refs/heads/master" ]; then
     echo "[UA] Skipping this commit because its not a commit to the 'master' branch"
@@ -10,6 +11,7 @@ echo "[UA] Beginning Flux CD Process..."
 # Needs to use https for private repo cloning
 git config --global hub.protocol https
 export GITHUB_USER=jenkins-uacf
+export GITHUB_PASSWORD=$GIT_PASSWORD
 
 cd /
 hub clone underarmour/flux-kubernetes
