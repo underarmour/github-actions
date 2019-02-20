@@ -13,7 +13,7 @@ RUN apt update -y && apt install -y curl git && \
     curl -sLO https://github.com/github/hub/releases/download/v2.9.0/hub-linux-amd64-2.9.0.tgz && \
     tar -xzf ./hub-linux-amd64-2.9.0.tgz && \
     chmod +x ./hub-linux-amd64-2.9.0/bin/hub && \
-    mv ./hub-linux-amd64-2.9.0/bin/hub /usr/local/hub && \
+    mv ./hub-linux-amd64-2.9.0/bin/hub /usr/local/bin/hub && \
     rm -rf ./hub-linux-amd64-2.9.0 && rm ./hub-linux-amd64-2.9.0.tgz
 
 ADD entrypoint.sh /entrypoint.sh
