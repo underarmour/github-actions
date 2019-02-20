@@ -24,3 +24,13 @@ action "flux-cd" {
 4. Add a github secret to your project https://github.com/underarmour/<REPO NAME>/settings/secrets 
 ![secret image example](./Secret.png)
 5. Commit the changes to your repo.
+6. Profit - you're k8s yaml will end up in the https://github.com/underarmour/flux-kubernetes repo
+
+## Convention
+
+The tool is built on convention over configuration so in your repository you need to have certain filepaths and these will be copied over to the flux repo if they exists with the following
+
+LOCAL REPO PATH -> FLUX REPO PATH
+- `ops/global` -> `global/automated/$GITHUB_REPOSITORY_NAME`
+- `ops/us` -> `us/automated/$GITHUB_REPOSITORY_NAME`
+- `ops/china` -> `tokyo/automated/$GITHUB_REPOSITORY_NAME`
