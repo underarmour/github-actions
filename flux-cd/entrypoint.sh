@@ -24,7 +24,7 @@ FLUX_REPO=/flux-kubernetes
 OPS_GLOBAL=$GITHUB_WORKSPACE/ops/global/
 OPS_US=$GITHUB_WORKSPACE/ops/us/
 OPS_CHINA=$GITHUB_WORKSPACE/ops/china/
-FOLDER=${GITHUB_REPOSITORY//underarmour/}
+FOLDER=${GITHUB_REPOSITORY//underarmour//}
 
 if [ -d "$OPS_GLOBAL" ]; then
     mkdir -p $FLUX_REPO/global/automated/$FOLDER
