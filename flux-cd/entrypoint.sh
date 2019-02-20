@@ -1,5 +1,9 @@
 #!/bin/sh -l
 
+if [ "$TESTVAR" != "refs/heads/master" ]
+    exit 0
+fi
+
 mkdir -p /flux
 cd /flux
 hub clone underarmour/flux-kubernetes
