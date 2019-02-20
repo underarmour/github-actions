@@ -1,7 +1,16 @@
 Flux CD
 -------
 
-This github action performs a continous deleivery of your kubernetes manifests to the underarmour flux repository
+This github action copies your kubernetes manifests to the underarmour flux repository
+
+## Convention Over Configuration
+
+The tool is built on convention over configuration so in your repository you need to have certain filepaths and these will be copied over to the flux repo if they exists with the following
+
+LOCAL REPO PATH -> FLUX REPO PATH
+- `kubernetes/global` -> `global/automated/$GITHUB_REPOSITORY_NAME`
+- `kubernetes/us` -> `us/automated/$GITHUB_REPOSITORY_NAME`
+- `kubernetes/china` -> `tokyo/automated/$GITHUB_REPOSITORY_NAME`
 
 ## Setup
 
@@ -20,17 +29,9 @@ action "flux-cd" {
   secrets = ["GIT_PASSWORD"]
 }
 ```
-3. Retreive the github bot password from vault https://vault.uacf.io at the location `secret/jenkins/github`
+NOTE: the script only lets commits to your repos 'master' branch get copied to the flux repo
+3. Retrieve the Github bot password from [vault](https://vault.uacf.io/ui/vault/secrets/secret/show/jenkins/github) at the location `secret/jenkins/github`
 4. Add a github secret to your project https://github.com/underarmour/{YOUR_REPO_NAME}/settings/secrets 
 ![secret image example](./Secret.png)
 5. Commit the changes to your repo.
-6. Profit - you're k8s yaml will end up in the https://github.com/underarmour/flux-kubernetes repo
-
-## Convention
-
-The tool is built on convention over configuration so in your repository you need to have certain filepaths and these will be copied over to the flux repo if they exists with the following
-
-LOCAL REPO PATH -> FLUX REPO PATH
-- `ops/global` -> `global/automated/$GITHUB_REPOSITORY_NAME`
-- `ops/us` -> `us/automated/$GITHUB_REPOSITORY_NAME`
-- `ops/china` -> `tokyo/automated/$GITHUB_REPOSITORY_NAME`
+6. Profit - you're kubernetes manifests will end up in the [flux repo](https://github.com/underarmour/flux-kubernetes)
