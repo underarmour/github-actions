@@ -7,6 +7,8 @@ fi
 
 echo "[UA] Beginning Flux CD Process..."
 
+git config credential.helper "/bin/bash /usr/local/bin/git-credential-helper.sh"
+
 mkdir -p /flux
 cd /flux
 hub clone underarmour/flux-kubernetes
