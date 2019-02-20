@@ -20,27 +20,27 @@ cd /
 hub clone underarmour/flux-kubernetes
 cd $GITHUB_WORKSPACE
 
-FLUX_REPO=/flux-kubernetes
-OPS_GLOBAL=$GITHUB_WORKSPACE/ops/global/
-OPS_US=$GITHUB_WORKSPACE/ops/us/
-OPS_CHINA=$GITHUB_WORKSPACE/ops/china/
-FOLDER=$(echo $GITHUB_REPOSITORY | cut -d'/' -f 2)
+FLUX_REPO="/flux-kubernetes"
+OPS_GLOBAL="$GITHUB_WORKSPACE/ops/global/"
+OPS_US="$GITHUB_WORKSPACE/ops/us/"
+OPS_CHINA="$GITHUB_WORKSPACE/ops/china/"
+MANIFEST_FOLDER="$(echo $GITHUB_REPOSITORY | cut -d '/' -f 2)"
 
 if [ -d "$OPS_GLOBAL" ]; then
-    mkdir -p $FLUX_REPO/global/automated/$FOLDER
-    cp -r $OPS_GLOBAL $FLUX_REPO/global/automated/$FOLDER
+    mkdir -p $FLUX_REPO/global/automated/$MANIFEST_FOLDER
+    cp -r $OPS_GLOBAL $FLUX_REPO/global/automated/$MANIFEST_FOLDER
     echo "[UA] Copying '$OPS_GLOBAL' files to flux repo."
 fi
 
 if [ -d "$OPS_US" ]; then
-    mkdir -p $FLUX_REPO//us/automated/$FOLDER
-    cp -r $OPS_US $FLUX_REPO/us/automated/$FOLDER
+    mkdir -p $FLUX_REPO//us/automated/$MANIFEST_FOLDER
+    cp -r $OPS_US $FLUX_REPO/us/automated/$MANIFEST_FOLDER
     echo "[UA] Copying '$OPS_US' files to flux repo."
 fi
 
 if [ -d "$OPS_CHINA" ]; then
-    mkdir -p $FLUX_REPO//tokyo/automated/$FOLDER
-    cp -r $OPS_CHINA $FLUX_REPO/tokyo/automated/$FOLDER
+    mkdir -p $FLUX_REPO//tokyo/automated/$MANIFEST_FOLDER
+    cp -r $OPS_CHINA $FLUX_REPO/tokyo/automated/$MANIFEST_FOLDER
     echo "[UA] Copying '$OPS_CHINA' files to flux repo."
 fi
 
