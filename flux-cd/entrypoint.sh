@@ -24,29 +24,32 @@ FLUX_REPO=/flux-kubernetes
 OPS_GLOBAL=$GITHUB_WORKSPACE/ops/global/
 OPS_US=$GITHUB_WORKSPACE/ops/us/
 OPS_CHINA=$GITHUB_WORKSPACE/ops/china/
-FOLDER=${GITHUB_REPOSITORY//underarmour\//}
+FOLDER=${GITHUB_REPOSITORY//underarmour/}
 
 if [ -d "$OPS_GLOBAL" ]; then
     mkdir -p $FLUX_REPO/global/automated/$FOLDER
-    cp -r $OPS_GLOBAL $FLUX_REPO/global/automated/$FOLDER
+    cp -r $OPS_GLOBAL $FLUX_REPO/global/automated$FOLDER
     echo "[UA] Copying '$OPS_GLOBAL' files to flux repo."
 fi
 
 if [ -d "$OPS_US" ]; then
     mkdir -p $FLUX_REPO//us/automated/$FOLDER
-    cp -r $OPS_US $FLUX_REPO/us/automated/$FOLDER
+    cp -r $OPS_US $FLUX_REPO/us/automated$FOLDER
     echo "[UA] Copying '$OPS_US' files to flux repo."
 fi
 
 if [ -d "$OPS_CHINA" ]; then
     mkdir -p $FLUX_REPO//tokyo/automated/$FOLDER
-    cp -r $OPS_CHINA $FLUX_REPO/tokyo/automated/$FOLDER
+    cp -r $OPS_CHINA $FLUX_REPO/tokyo/automated$FOLDER
     echo "[UA] Copying '$OPS_CHINA' files to flux repo."
 fi
 
 cd $FLUX_REPO
 git add -A
-git commit -a -m "Automated update of the k8s manifests from $GITHUB_REPOSITORY"
-git status
-# Allow for PRs? https://hub.github.com/hub-pull-request.1.html
-git push origin HEAD:refs/heads/master
+if ! git diff-index --quiet HEAD --; then
+    git commit --quiet -a -m "Automated update of the k8s manifests from $GITHUB_REPOSITORY"
+    git status
+    # Allow for PRs? https://hub.github.com/hub-pull-request.1.html
+    git push --quiet origin HEAD:refs/heads/master
+    echo "[US] Pushed kubernetes manifest changes to flux repo"
+fi
