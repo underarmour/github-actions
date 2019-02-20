@@ -7,7 +7,7 @@ LABEL "com.github.actions.color"="red"
 
 LABEL "repository"="http://github.com/underarmour/github-actions"
 LABEL "homepage"="http://github.com/underarmour/github-actions"
-LABEL "maintainer"="Ops <ops@underarmour.com>"
+LABEL "maintainer"="Under Armour <ops@underarmour.com>"
 
 RUN apt update -y && apt install -y curl git && \
     curl -sLO https://github.com/github/hub/releases/download/v2.9.0/hub-linux-amd64-2.9.0.tgz && \
@@ -16,6 +16,5 @@ RUN apt update -y && apt install -y curl git && \
     mv ./hub-linux-amd64-2.9.0/bin/hub /usr/local/bin/hub && \
     rm -rf ./hub-linux-amd64-2.9.0 && rm ./hub-linux-amd64-2.9.0.tgz
 
-ADD git-credential-helper.sh /usr/local/bin/git-credential-helper.sh
 ADD entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
