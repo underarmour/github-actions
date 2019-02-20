@@ -16,5 +16,6 @@ RUN apt update -y && apt install -y curl git && \
     mv ./hub-linux-amd64-2.9.0/bin/hub /usr/local/bin/hub && \
     rm -rf ./hub-linux-amd64-2.9.0 && rm ./hub-linux-amd64-2.9.0.tgz
 
+ADD git-credentials-helper.sh /usr/local/bin/git-credentials-helper.sh
 ADD entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]

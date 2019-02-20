@@ -10,6 +10,7 @@ echo "[UA] Beginning Flux CD Process..."
 
 # Needs to use https for private repo cloning
 git config --global hub.protocol https
+git config --global credential.helper "/bin/sh /usr/local/bin/git-credentials-helper.sh"
 export GITHUB_USER=jenkins-uacf
 export GITHUB_PASSWORD=$GIT_PASSWORD
 
