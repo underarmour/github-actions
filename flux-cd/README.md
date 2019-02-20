@@ -29,7 +29,8 @@ action "flux-cd" {
   secrets = ["GIT_PASSWORD"]
 }
 ```
-NOTE: the script only lets commits to your repos 'master' branch get copied to the flux repo
+  NOTE: the script only lets commits to your repos 'master' branch get copied to the flux repo
+  
 3. Retrieve the Github bot password from [vault](https://vault.uacf.io/ui/vault/secrets/secret/show/jenkins/github) at the location `secret/jenkins/github`
 4. Add a github secret to your project https://github.com/underarmour/{YOUR_REPO_NAME}/settings/secrets 
 ![secret image example](./Secret.png)
