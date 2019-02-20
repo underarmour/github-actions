@@ -11,6 +11,8 @@ echo "[UA] Beginning Flux CD Process..."
 # Needs to use https for private repo cloning
 git config --global hub.protocol https
 git config --global credential.helper "/bin/sh /usr/local/bin/git-credentials-helper.sh"
+git config --global user.email "ops@underarmour.com"
+git config --global user.name "jenkins-uacf"
 export GITHUB_USER=jenkins-uacf
 export GITHUB_PASSWORD=$GIT_PASSWORD
 
@@ -42,7 +44,7 @@ if [ -d "$OPS_CHINA" ]; then
 fi
 
 cd $FLUX_REPO
-
+git add -A
 git commit -a -m "Automated update of the k8s manifests from $GITHUB_REPOSITORY"
 git status
 # Allow for PRs? https://hub.github.com/hub-pull-request.1.html
