@@ -8,6 +8,8 @@ if [[ -z "$SLACK_BOT_USER_TOKEN" ]]; then
   exit 1
 fi
 
+echo "Replacing Variables"
+
 message="{\"channel\":\"$slack_channel\",\"attachments\":[{\"pretext\":\"$slack_pretext\",\"title\":\"$slack_title\",\"text\":\"$slack_text\"}]}"
 message="${message//GITHUB_REF/$GITHUB_REF}"
 message="${message//GITHUB_REPOSITORY/$GITHUB_REPOSITORY}"
