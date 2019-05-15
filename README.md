@@ -23,14 +23,16 @@ action "notify slack" {
   ]
   env = {
     slack_channel = "<<channel_code>>",
-    pretext = "A new artifact was published to S3",
-    title = "GITHUB_REPOSITORY",
-    text = "User name: _GITHUB_ACTOR_<br>Branch name: _GITHUB_REF_<br>*ARTIFACT_NAME*"
+    slack_pretext = "A new artifact was published to S3",
+    slack_title = "GITHUB_REPOSITORY",
+    slack_text = "User name: _GITHUB_ACTOR_<br>Branch name: _GITHUB_REF_<br>*ARTIFACT_NAME*"
   }
 }
 ```
 
 ### Variables
+You can just put any of these Keys inside any of your env Variables and the will be replaced afterwards.
+
 Key | Value
 ------------ | -------------
 <br> | Newline
