@@ -17,7 +17,7 @@ This repository contains tooling for github actions
 ```
 action "notify slack" {
   needs = "<<previous steps>>"
-  uses = "underarmour/github-actions/slack-message@Master"
+  uses = "underarmour/github-actions/slack-message@master"
   secrets = [
     "SLACK_BOT_USER_TOKEN",
   ]
